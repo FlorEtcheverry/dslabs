@@ -1,5 +1,5 @@
 defmodule Master do
-  @node_names [:"foo@florencia-VirtualBox", :"dos@florencia-VirtualBox", :"tres@florencia-VirtualBox"]
+  @node_names [:"bar@machine2"]
 
   def start do
     nodes = Map.new(@node_names,fn x-> {x,0} end)
@@ -27,7 +27,7 @@ defmodule Master do
   defp start_algo(nodes) do
     names = Map.keys(nodes)
     Enum.each(Enum.with_index(names), fn {x,i} -> send(Map.get(nodes,x),{:start_algorithm,Node.self(),Map.get(nodes,Enum.at(names,rem(i+1,length(names))))}) end)
-    send( Map.get(nodes,List.first(Map.keys(nodes))), {:token,Node.self()} )
+    send( Map.get(nodes,List.first(Map.keys(nodes))), {:token,Node.self(),0} )
     nodes
   end
 
