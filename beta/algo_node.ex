@@ -19,13 +19,13 @@ defmodule AlgorithmNode do
       {:start_algorithm, from, next} ->
         Logger.info "Algorithm already started."
         IO.puts "Process #{Node.self()}: Algorithm already started."
-      {:token, from} ->
-        Logger.info "Received token from #{from}."
+      {:token, from, number} ->
+        Logger.info "Received token from #{from} and the number is #{number}."
         IO.puts "Process #{Node.self()}: Received token from #{from}."
         :timer.sleep(1000)
         Logger.info "Finished processing."
         IO.puts "Process #{Node.self()}: Finished processing"
-        send(next,{:token,Node.self()})
+        send(next,{:token,Node.self(),number+1})
         Logger.info "Sent token to next."
         IO.puts "Process #{Node.self()}: Sent token to next."
         start_(next)
