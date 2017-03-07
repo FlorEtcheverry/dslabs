@@ -1,5 +1,5 @@
 defmodule Master do
-  @node_names [:"bar@machine2"]
+  @node_names [:"one@florencia-VirtualBox",:"two@florencia-VirtualBox"]
 
   def start do
     nodes = Map.new(@node_names,fn x-> {x,0} end)
@@ -21,7 +21,12 @@ defmodule Master do
     n_collec = Enum.map(names, fn x ->
         {x ,Node.spawn_link(x,AlgorithmNode,:nodeStart,[])}
       end)
-      Map.new(n_collec)
+    n_nodes = Map.new(n_collec)
+    #Enum.map(n_nodes, fn {k,v} -> :global.register_name(k,v) end)
+    IO.inspect(n_nodes)
+    #IO.inspect(:global.registered_names())
+    #Enum.each(:global.registered_names(), fn x -> IO.inspect(:global.whereis_name(x)) end)
+    n_nodes
   end
 
   defp start_algo(nodes) do

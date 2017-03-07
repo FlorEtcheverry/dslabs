@@ -1,5 +1,5 @@
 1. For each node (different windows):
-  $ iex --sname xxxxxx algo_no.ex
+  $ iex --sname xxxxxx algo_node.ex
   iex> import_if_available AlgorithmNode
 
 2. Update @node_names list with the nodes [:"xxxxx",...]
