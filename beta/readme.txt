@@ -7,4 +7,4 @@
 3. In another window:
   $ elixir --sname master -r master.ex -e 'Master.start'
 
-  - setup for starting the nodes, then start, then end
+  - "setup" for starting the nodes, then "start", then "end"
