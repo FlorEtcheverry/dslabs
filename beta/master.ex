@@ -1,5 +1,5 @@
 defmodule Master do
-  @node_names [:"one@florencia-VirtualBox",:"two@florencia-VirtualBox"]
+  @node_names [:"one@192.168.1.8",:"two@192.168.1.15"]
 
   def start do
     nodes = Map.new(@node_names,fn x-> {x,0} end)
